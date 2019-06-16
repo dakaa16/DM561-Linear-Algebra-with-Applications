@@ -1,0 +1,295 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Grade: 78.00/100.00
+
+4 Deduction(s):
+
+- --------------
+#1: 15.00 points
+Failing test: test_isPermutationMatrix: 
+        @points=15
+        
+Traceback (most recent call last):
+  File "/home/pygrade/pygrade-virtualenv/lib/python3.6/site-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg2.py", line 64, in test_isPermutationMatrix
+    self.assertEqual( result, expected )
+AssertionError: True != False
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_isPermutationMatrix(self):
+         """
+         @points=15
+         """
+         matrix = np.array([[0,1,0],[1,0,0],[0,0,1]])
+         result = isPermutationMatrix(matrix)
+         expected = self.sol_isPermutationMatrix(matrix)
+ 
+         self.assertEqual( result, expected )
+ 
+         matrix = np.array([[0,1,0],[1,0,0],[0,1,0]])
+         result = isPermutationMatrix(matrix)
+         expected = self.sol_isPermutationMatrix(matrix)
+ 
+         self.assertEqual( result, expected )
+- --------------
+
+- --------------
+#2: 1.00 points
+Failing test: test_moreThanOneSubgraphTest1:  
+        This is the test for instances where a brute force
+        approach should work fine.
+        @points=1 
+        
+Traceback (most recent call last):
+  File "/home/pygrade/pygrade-virtualenv/lib/python3.6/site-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg2.py", line 155, in test_moreThanOneSubgraphTest1
+    self.assertEqual( result, expected )
+AssertionError: None != True
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_moreThanOneSubgraphTest1(self):
+         """ 
+         This is the test for instances where a brute force
+         approach should work fine.
+         @points=1 
+         """
+         A = np.array([[0, 1, 0, 0], [1, 0, 1, 0], [0, 1, 0, 1], [0, 0, 1, 0]])  
+         B = np.array([[0, 1], [1, 0]])
+         result = moreThanOneSubgraph(A, B)
+         expected = self.sol_moreThanOneSubgraph(A, B)
+         self.assertEqual( result, expected )
+ 
+         # Naaaah ... While "return True" is indeed a good guess for an automated
+         # testing environment, it is a bit like Randall's solution in 
+         # xkcd 1266 .... https://xkcd.com/1266/ :) ...
+         # see also https://www.explainxkcd.com/wiki/index.php/1266:_Halting_Problem
+         #
+         A = np.array([[0, 1, 0, 0], [1, 0, 1, 0], [0, 1, 0, 1], [0, 0, 1, 0]])
+         B = np.array([[0, 1, 1], [1, 0, 1], [0, 1, 1]])
+         result = moreThanOneSubgraph(A, B)
+         expected = self.sol_moreThanOneSubgraph(A, B)
+         self.assertEqual( result, expected )
+ 
+         A = np.array([[0, 1, 1], [1, 0, 1], [1, 1, 0]])	
+         B = np.array([[0, 1], [1, 0]])
+         result = moreThanOneSubgraph(A, B)
+         expected = self.sol_moreThanOneSubgraph(A, B)
+         self.assertEqual( result, expected )
+- --------------
+
+- --------------
+#3: 1.00 points
+Failing test: test_moreThanOneSubgraphTest2:  @points=1 
+Traceback (most recent call last):
+  File "/home/pygrade/pygrade-virtualenv/lib/python3.6/site-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg2.py", line 200, in test_moreThanOneSubgraphTest2
+    self.assertEqual( result, expected )
+AssertionError: None != False
+
+source:
+    @timeout_decorator.timeout(30)
+     def test_moreThanOneSubgraphTest2(self):
+         """ @points=1 """
+         A = np.array([[0,0,0,0,1,0,0,0,0,0],
+                       [0,0,0,0,0,1,0,0,0,1],
+                       [0,0,0,0,0,0,0,1,0,0],
+                       [0,0,0,0,1,0,0,0,0,1],
+                       [1,0,0,1,0,0,1,1,0,0],
+                       [0,1,0,0,0,0,1,0,0,0],
+                       [0,0,0,0,1,1,0,0,1,0],
+                       [0,0,1,0,1,0,0,0,1,0],
+                       [0,0,0,0,0,0,1,1,0,0],
+                       [0,1,0,1,0,0,0,0,0,0]])
+         
+         B = np.array([[0,0,1,0,0,0,0,0,0],
+                       [0,0,1,0,0,1,0,0,0],
+                       [1,1,0,0,0,0,0,1,1],
+                       [0,0,0,0,1,0,0,0,1],
+                       [0,0,0,1,0,1,0,0,0],
+                       [0,1,0,0,1,0,0,0,0],
+                       [0,0,0,0,0,0,0,1,1],
+                       [0,0,1,0,0,0,1,0,0],
+                       [0,0,1,1,0,0,1,0,0]])
+         
+         result = moreThanOneSubgraph(A, B)
+         expected = self.sol_moreThanOneSubgraph(A, B)
+         self.assertEqual( result, expected )
+ 
+         # Just for not allowing "Return False"
+         A = np.array([[0, 1, 0, 0], [1, 0, 1, 0], [0, 1, 0, 1], [0, 0, 1, 0]])  
+         B = np.array([[0, 1], [1, 0]])
+         
+         result = moreThanOneSubgraph(A, B)
+         expected = self.sol_moreThanOneSubgraph(A, B)
+         self.assertEqual( result, expected )
+ 
+         
+         # A = np.array([[0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1],
+         #      [0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0],
+         #      [1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1],
+         #      [1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0],
+         #      [0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0],
+         #      [1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0],
+         #      [1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1],
+         #      [1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1],
+         #      [1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1],
+         #      [1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0],
+         #      [1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0],
+         #      [1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1],
+         #      [1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0],
+         #      [1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1],
+         #      [0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0],
+         #      [0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+         #      [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0],
+         #      [0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1],
+         #      [0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+         #      [1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0]])
+         
+         # B = np.array([[0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1],
+         #      [0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1],
+         #      [0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0],
+         #      [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0],
+         #      [0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1],
+         #      [0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1],
+         #      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0],
+         #      [0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0],
+         #      [1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1],
+         #      [0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1],
+         #      [1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1],
+         #      [1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0],
+         #      [1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1],
+         #      [0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1],
+         #      [1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0]])
+         
+         # result = moreThanOneSubgraph(A, B)
+         # expected = self.sol_moreThanOneSubgraph(A, B)
+         # self.assertEqual( result, expected )
+ 
+         # A = np.array([[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         #      [0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         #      [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0],
+         #      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+         #      [0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+         #      [0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         #      [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+         #      [0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+         #      [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+         #      [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0],
+         #      [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+         #      [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+         #      [0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         #      [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0],
+         #      [0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0],
+         #      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         #      [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+         #      [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+         #      [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+         #      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]])
+         
+         # B = np.array([[0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+         #      [0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0],
+         #      [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         #      [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0],
+         #      [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+         #      [1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+         #      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+         #      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+         #      [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         #      [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+         #      [0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0],
+         #      [0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+         #      [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]])
+ 
+         
+         # result = moreThanOneSubgraph(A, B)
+         # expected = self.sol_moreThanOneSubgraph(A, B)
+         # self.assertEqual( result, expected )
+         
+ 
+         # A = np.array([[0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0],
+         #      [0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0],
+         #      [1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0],
+         #      [0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0],
+         #      [0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1],
+         #      [1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0],
+         #      [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1],
+         #      [1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         #      [0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0],
+         #      [0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+         #      [0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1],
+         #      [1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1],
+         #      [1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+         #      [1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+         #      [0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1],
+         #      [0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0],
+         #      [0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0],
+         #      [1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1],
+         #      [1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1],
+         #      [0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0]])
+ 
+         # B = np.array([[0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1],
+         #      [1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1],
+         #      [1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0],
+         #      [0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0],
+         #      [1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1],
+         #      [0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0],
+         #      [0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1],
+         #      [0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0],
+         #      [0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0],
+         #      [1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1],
+         #      [1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0],
+         #      [1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1],
+         #      [1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0]])
+ 
+         result = moreThanOneSubgraph(A, B)
+         expected = self.sol_moreThanOneSubgraph(A, B)
+         self.assertEqual( result, expected )
+- --------------
+
+- --------------
+#4: 5.00 points
+Failing test: test_isPermutationMatrixException1:  @points=5 
+Traceback (most recent call last):
+  File "/home/pygrade/pygrade-virtualenv/lib/python3.6/site-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg2.py", line 70, in test_isPermutationMatrixException1
+    self.assertRaises(TypeError, isPermutationMatrix, arg)
+  File "/usr/lib/python3.6/unittest/case.py", line 733, in assertRaises
+    return context.handle('assertRaises', args, kwargs)
+  File "/usr/lib/python3.6/unittest/case.py", line 178, in handle
+    callable_obj(*args, **kwargs)
+  File "students/dakaa16-repo/asg2-graphs/asg2.py", line 68, in isPermutationMatrix
+    if s[0] != s[1] or len(s) != 2:
+IndexError: tuple index out of range
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_isPermutationMatrixException1(self):
+         """ @points=5 """
+         arg=np.array([0,0,1])
+         self.assertRaises(TypeError, isPermutationMatrix, arg)
+- --------------
+
+
+Metadata
+===================
+Assignment: asg2-graphs
+Repo: ssh://git@git.imada.sdu.dk/DM561-DM562-2018/dakaa16-repo
+Timestamp: 1543590921.9866912
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJcAVQJAAoJEKiHxn3oWX95KuUIAI/LMwxGwkuCkWLKAYCsoMGw
+Sxe/4gA5T6jileT1wEIIXG69fynK+xXyhvJU0x+iQsv7baxXRuycUyYDXlQ1Emhl
+tYTESEXpekXIJ5bqYrqoRD/0tuVt2nnrX+g3Ij2GE4HrLfOO+0yHplzIeN+q2Un0
+eQAvEn/SZ8RB5ze6lkYYnPX5zf+pL5fUCThuvQPBZIyTiYEJdVhronI552pcZpkX
+ry6mt0jnSpyaqXDVi65NJHOIIuDzYYsM6VqF4Uegxe8acMaeCOoFxF8JaLBNNyzX
+oendbRK9Q6Cnp61wlsKctPVnMoR+Zt+pHVX53Ci8Mv6R6eL4GMcCOd1euNsDp40=
+=ZIG+
+-----END PGP SIGNATURE-----

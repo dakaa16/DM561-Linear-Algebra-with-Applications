@@ -1,0 +1,112 @@
+Grade: 0.00/8.00
+
+4 Deduction(s):
+
+--------------
+#1: 2.00 points
+Failing test: test_lengthThreePaths:  @points=2 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg3b.py", line 82, in test_lengthThreePaths
+    self.assertEqual( result, expected )
+AssertionError: None != 3
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_lengthThreePaths(self):
+         """ @points=2 """
+         W = np.array([[0.0, inf, 1.0, inf, inf, inf], 
+                       [inf, 0.0, 1.0, inf, inf, inf], 
+                       [1.0, 1.0, 0.0, 1.0, 1.0, inf], 
+                       [inf, inf, 1.0, 0.0, inf, 1.0], 
+                       [inf, inf, 1.0, inf, 0.0, inf], 
+                       [inf, inf, inf, 1.0, inf, 0.0]])
+         result = lengthThreePaths(W)
+         expected = self.sol_lengthThreePaths(W)
+         self.assertEqual( result, expected )
+--------------
+
+--------------
+#2: 2.00 points
+Failing test: test_boilingPoint:  @points=2 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg3b.py", line 99, in test_boilingPoint
+    result = round(boilingPoint(W),2)
+TypeError: type NoneType doesn't define __round__ method
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_boilingPoint(self):
+         """ @points=2 """
+         W = np.array([[0.0, inf, 1.0, inf, inf, inf], 
+                       [inf, 0.0, 1.0, inf, inf, inf], 
+                       [1.0, 1.0, 0.0, 1.0, 1.0, inf], 
+                       [inf, inf, 1.0, 0.0, inf, 1.0], 
+                       [inf, inf, 1.0, inf, 0.0, inf], 
+                       [inf, inf, inf, 1.0, inf, 0.0]])
+         result = round(boilingPoint(W),2)
+         expected = round(self.sol_boilingPoint(W),2)
+         self.assertAlmostEqual( result, expected )
+--------------
+
+--------------
+#3: 2.00 points
+Failing test: test_distanceMatrix:  @points=2 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg3b.py", line 64, in test_distanceMatrix
+    resultBool = np.allclose(result,expected)
+  File "/usr/local/lib/python3.6/dist-packages/numpy-1.15.4-py3.6-linux-x86_64.egg/numpy/core/numeric.py", line 2270, in allclose
+    res = all(isclose(a, b, rtol=rtol, atol=atol, equal_nan=equal_nan))
+  File "/usr/local/lib/python3.6/dist-packages/numpy-1.15.4-py3.6-linux-x86_64.egg/numpy/core/numeric.py", line 2363, in isclose
+    xfin = isfinite(x)
+TypeError: ufunc 'isfinite' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_distanceMatrix(self):
+         """ @points=2 """
+         W = np.array([[0.0, inf, 1.0, inf, inf, inf, inf], 
+                       [inf, 0.0, 1.0, inf, inf, inf, inf], 
+                       [1.0, 1.0, 0.0, 1.0, 1.0, inf, inf], 
+                       [inf, inf, 1.0, 0.0, inf, 1.0, inf], 
+                       [inf, inf, 1.0, inf, 0.0, inf, inf], 
+                       [inf, inf, inf, 1.0, inf, 0.0, 1.0],
+                       [inf, inf, inf, inf, inf, 1.0, 0.0]])
+         result = distanceMatrix(W)
+         expected = self.sol_distanceMatrix(W)
+         resultBool = np.allclose(result,expected)
+         self.assertTrue(resultBool)
+--------------
+
+--------------
+#4: 2.00 points
+Failing test: test_wienerIndex:  @points=2 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg3b.py", line 30, in test_wienerIndex
+    self.assertAlmostEqual( result, expected )
+  File "/usr/lib/python3.6/unittest/case.py", line 871, in assertAlmostEqual
+    if round(abs(second-first), places) == 0:
+TypeError: unsupported operand type(s) for -: 'float' and 'NoneType'
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_wienerIndex(self):
+         """ @points=2 """
+         W = np.array([[0.0, inf, 1.0, inf, inf, inf], 
+                       [inf, 0.0, 1.0, inf, inf, inf], 
+                       [1.0, 1.0, 0.0, 1.0, 1.0, inf], 
+                       [inf, inf, 1.0, 0.0, inf, 1.0], 
+                       [inf, inf, 1.0, inf, 0.0, inf], 
+                       [inf, inf, inf, 1.0, inf, 0.0]])
+         result = wienerIndex(W)
+         expected = self.sol_wienerIndex(W)
+         self.assertAlmostEqual( result, expected )
+--------------
+

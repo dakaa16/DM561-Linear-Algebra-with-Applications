@@ -1,0 +1,21 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Grade: 100.00/100.00
+
+Metadata
+===================
+Assignment: asg1-vecmat
+Repo: ssh://git@git.imada.sdu.dk/DM561-DM562-2018/dakaa16-repo
+Timestamp: 1542978819.6652176
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJb9/0DAAoJEKiHxn3oWX95tP0H/1htymjZVjKjw6vTrrl6S6iP
+eec6IK4vcUyWZXBgx9Jw17Ovhlvy91N6sf4fCcF767N04CUm9Q8VCCoE8PDlae+V
+5nxP6439B3o28efrzzJjFuKCQ1OvmQssq+ibihnxfE8P9tTSCE+7fM0vKQH2SyPm
+nzv+DF85d+EJnK8s33RCzpYdWifzbLvtJfuEEpqbfKuFGdVOSnT72+1izi5oT+ll
+tojj0Gpjuiy0jC8d6Chla9xrfVYo05tqRCYTVvIIZSraLawzxyfiuO15tZ9omsRu
+k0j5pU6Hz3l5cgg4KMwhksDgSWvd7PoEX77vGWD7Zqyef1d8+FzQa5XxOKdeVdE=
+=Ufr+
+-----END PGP SIGNATURE-----

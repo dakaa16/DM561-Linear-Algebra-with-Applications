@@ -1,0 +1,67 @@
+Grade: 80.00/100.00
+
+2 Deduction(s):
+
+--------------
+#1: 10.00 points
+Failing test: test_logarithmic_model: 
+        We specify the point value for each test in the method comment string:
+        @points=10
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg4.py", line 84, in test_logarithmic_model
+    self.assertTrue(np.allclose( logarithmic_model(self.x,self.y), dm561.logarithmic_model(self.x,self.y) ) )
+AssertionError: False is not true
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_logarithmic_model(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=10
+         """
+         self.assertTrue(np.allclose( logarithmic_model(self.x,self.y), dm561.logarithmic_model(self.x,self.y) ) )
+--------------
+
+--------------
+#2: 10.00 points
+Failing test: test_training_error: 
+        We specify the point value for each test in the method comment string:
+        @points=10
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg4.py", line 111, in test_training_error
+    self.assertTrue(np.allclose( errs, [5.973961356228736, 0.8727449317143492, 7.9556607875909435, 11.3350059692616] ) )
+AssertionError: False is not true
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_training_error(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=10
+         """
+         errs = []
+         a,b = linear_model(self.x,self.y)
+         f=lambda xx: a*xx + b
+         errs.append(training_error(f,self.x,self.y))
+ 
+         a,b = exponential_model(self.x,self.y)
+         f = lambda xx: a*np.exp(b*xx)
+         errs.append(training_error(f,self.x,self.y))
+ 
+         a,b = power_model(self.x,self.y)
+         f = lambda xx: a*(xx**b)
+         errs.append(training_error(f,self.x,self.y))
+ 
+         a,b = logarithmic_model(self.x,self.y)
+         f = lambda xx: a+b*np.log(xx)
+         errs.append(training_error(f,self.x,self.y))
+ 
+         self.assertTrue(np.allclose( errs, [5.973961356228736, 0.8727449317143492, 7.9556607875909435, 11.3350059692616] ) )
+--------------
+

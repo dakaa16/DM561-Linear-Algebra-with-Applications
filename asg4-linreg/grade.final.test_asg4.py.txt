@@ -1,0 +1,87 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Grade: 80.00/100.00
+
+2 Deduction(s):
+
+- --------------
+#1: 10.00 points
+Failing test: test_logarithmic_model: 
+        We specify the point value for each test in the method comment string:
+        @points=10
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg4.py", line 84, in test_logarithmic_model
+    self.assertTrue(np.allclose( logarithmic_model(self.x,self.y), dm561.logarithmic_model(self.x,self.y) ) )
+AssertionError: False is not true
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_logarithmic_model(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=10
+         """
+         self.assertTrue(np.allclose( logarithmic_model(self.x,self.y), dm561.logarithmic_model(self.x,self.y) ) )
+- --------------
+
+- --------------
+#2: 10.00 points
+Failing test: test_training_error: 
+        We specify the point value for each test in the method comment string:
+        @points=10
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg4.py", line 111, in test_training_error
+    self.assertTrue(np.allclose( errs, [5.973961356228736, 0.8727449317143492, 7.9556607875909435, 11.3350059692616] ) )
+AssertionError: False is not true
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_training_error(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=10
+         """
+         errs = []
+         a,b = linear_model(self.x,self.y)
+         f=lambda xx: a*xx + b
+         errs.append(training_error(f,self.x,self.y))
+ 
+         a,b = exponential_model(self.x,self.y)
+         f = lambda xx: a*np.exp(b*xx)
+         errs.append(training_error(f,self.x,self.y))
+ 
+         a,b = power_model(self.x,self.y)
+         f = lambda xx: a*(xx**b)
+         errs.append(training_error(f,self.x,self.y))
+ 
+         a,b = logarithmic_model(self.x,self.y)
+         f = lambda xx: a+b*np.log(xx)
+         errs.append(training_error(f,self.x,self.y))
+ 
+         self.assertTrue(np.allclose( errs, [5.973961356228736, 0.8727449317143492, 7.9556607875909435, 11.3350059692616] ) )
+- --------------
+
+
+Metadata
+===================
+Assignment: asg4-linreg
+Repo: ssh://git@git.imada.sdu.dk/DM561-DM562-2018/dakaa16-repo
+Timestamp: 1544786127.1340175
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJcE5DPAAoJEKiHxn3oWX95Q/MIAKdrSuKBf+wboNs2f27xC0TH
+co5g9nReP40JBIqqkifdhAFZqscM2MsCViOnK9/7aomo752ImRp1hRZX/XjOFaWb
+00CTxoPQm8yB7UHq5n5Zldq6vB8Oy1xCqdgz8XvTB3Jqd0yx18bAUfGmLWo+/OtA
+7+Of435VeZuGwv0P25GeD3r3hvwvZyh6PWAdcd/bIWks2A6Za3D8+xK+hPQn2IhG
+5tiSryeOqghVvEA9D1mpRZHPdRLkYpM9/DYitK8Z7kNIeTAcN1oCVl3VRnbWfrym
+c5U+Jo7okHf0bSjrUNUdF2grOu9y+Fr3dnLxzUJcQAbIUo7GGfXSf43aeba+BXs=
+=oOfP
+-----END PGP SIGNATURE-----

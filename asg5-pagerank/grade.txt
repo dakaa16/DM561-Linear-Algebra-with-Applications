@@ -1,0 +1,87 @@
+Grade: 68.00/100.00
+
+3 Deduction(s):
+
+--------------
+#1: 12.00 points
+Failing test: test_eigensolve: 
+        We specify the point value for each test in the method comment string:
+        @points=12
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg5.py", line 83, in test_eigensolve
+    self.assertTrue(self.AlmostEqualDict(steady_state, dm561_steady_state))
+AssertionError: False is not true
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_eigensolve(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=12
+         """
+         G = DiGraph(self.A, labels=list('abcdefghil'))
+         steady_state = G.eigensolve(epsilon=0.7)
+ 
+         G_dm561 = dm561.DiGraph(self.A, labels=list('abcdefghil'))
+         dm561_steady_state = G_dm561.eigensolve(epsilon=0.7)
+ 
+         self.assertTrue(self.AlmostEqualDict(steady_state, dm561_steady_state))
+--------------
+
+--------------
+#2: 10.00 points
+Failing test: test_rank_uefa_teams: 
+        We specify the point value for each test in the method comment string:
+        @points=10
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg5.py", line 136, in test_rank_uefa_teams
+    res = rank_uefa_teams("psh-uefa-2017-2018.csv",0.9)[0:10]
+  File "students/dakaa16-repo/asg5-pagerank/asg5.py", line 224, in rank_uefa_teams
+    raise NotImplementedError("Task 3 Incomplete")
+NotImplementedError: Task 3 Incomplete
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_rank_uefa_teams(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=10
+         """
+         res = rank_uefa_teams("psh-uefa-2017-2018.csv",0.9)[0:10]
+ 
+         self.assertEqual(res, dm561.rank_uefa_teams("psh-uefa-2017-2018.csv",0.9)[0:10] )
+--------------
+
+--------------
+#3: 10.00 points
+Failing test: test_rank_websites: 
+        We specify the point value for each test in the method comment string:
+        @points=10
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg5.py", line 124, in test_rank_websites
+    res = rank_websites(epsilon=0.8)[0:10]
+  File "students/dakaa16-repo/asg5-pagerank/asg5.py", line 198, in rank_websites
+    raise NotImplementedError("Task 2 Incomplete")
+NotImplementedError: Task 2 Incomplete
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_rank_websites(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=10
+         """
+         res = rank_websites(epsilon=0.8)[0:10]
+ 
+         self.assertEqual(res, dm561.rank_websites(epsilon=0.8)[0:10] )
+--------------
+

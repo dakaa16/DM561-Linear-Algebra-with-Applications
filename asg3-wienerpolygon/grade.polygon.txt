@@ -1,0 +1,71 @@
+Grade: 90.00/92.00
+
+2 Deduction(s):
+
+--------------
+#1: 1.00 points
+Failing test: test_convEllipse:  @points=1 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/numpy-1.15.4-py3.6-linux-x86_64.egg/numpy/core/fromnumeric.py", line 51, in _wrapfunc
+    return getattr(obj, method)(*args, **kwds)
+AttributeError: 'NoneType' object has no attribute 'round'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg3a.py", line 114, in test_convEllipse
+    result = np.around(convEllipse(x,y),3).tolist()
+  File "/usr/local/lib/python3.6/dist-packages/numpy-1.15.4-py3.6-linux-x86_64.egg/numpy/core/fromnumeric.py", line 2800, in around
+    return _wrapfunc(a, 'round', decimals=decimals, out=out)
+  File "/usr/local/lib/python3.6/dist-packages/numpy-1.15.4-py3.6-linux-x86_64.egg/numpy/core/fromnumeric.py", line 61, in _wrapfunc
+    return _wrapit(obj, method, *args, **kwds)
+  File "/usr/local/lib/python3.6/dist-packages/numpy-1.15.4-py3.6-linux-x86_64.egg/numpy/core/fromnumeric.py", line 41, in _wrapit
+    result = getattr(asarray(obj), method)(*args, **kwds)
+TypeError: unsupported operand type(s) for *: 'NoneType' and 'float'
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_convEllipse(self):
+         """ @points=1 """
+         (x,y)=(np.array([ 0.09335276, -0.39213569,  0.45454744,  0.47834171, -0.63410622]),np.array([-0.25395211,  0.1276667 ,  0.80838746, -0.21242824, -0.46967381]))
+         result = np.around(convEllipse(x,y),3).tolist()
+         expected = np.around(self.sol_convEllipse(x,y),3).tolist()
+         self.assertListEqual( result[0], expected[0] )
+         self.assertListEqual( result[1], expected[1] )
+--------------
+
+--------------
+#2: 1.00 points
+Failing test: test_pairCS:  @points=1 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/numpy-1.15.4-py3.6-linux-x86_64.egg/numpy/core/fromnumeric.py", line 51, in _wrapfunc
+    return getattr(obj, method)(*args, **kwds)
+AttributeError: 'NoneType' object has no attribute 'round'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg3a.py", line 79, in test_pairCS
+    result = np.around(pairCS(7),3).tolist()
+  File "/usr/local/lib/python3.6/dist-packages/numpy-1.15.4-py3.6-linux-x86_64.egg/numpy/core/fromnumeric.py", line 2800, in around
+    return _wrapfunc(a, 'round', decimals=decimals, out=out)
+  File "/usr/local/lib/python3.6/dist-packages/numpy-1.15.4-py3.6-linux-x86_64.egg/numpy/core/fromnumeric.py", line 61, in _wrapfunc
+    return _wrapit(obj, method, *args, **kwds)
+  File "/usr/local/lib/python3.6/dist-packages/numpy-1.15.4-py3.6-linux-x86_64.egg/numpy/core/fromnumeric.py", line 41, in _wrapit
+    result = getattr(asarray(obj), method)(*args, **kwds)
+TypeError: unsupported operand type(s) for *: 'NoneType' and 'float'
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_pairCS(self):
+         """ @points=1 """
+         result = np.around(pairCS(7),3).tolist()
+         expected = np.around(self.sol_pairCS(7),3).tolist()
+         self.assertListEqual( result[0], expected[0] )
+         self.assertListEqual( result[1], expected[1] )
+--------------
+
